@@ -12,14 +12,14 @@ Lo comparto para aumentar la lista(con la ayuda de ustedes) y darle robustez al 
 
 # Archivos
 
-ciudad.txt        ---> Lista de ciudades disponibles para comando "aire".
-BotTelegram.py    ---> Bot
+<br>ciudad.txt        ---> Lista de ciudades disponibles para comando "aire".
+<br>BotTelegram.py    ---> Bot
 
 
 
 # Pendientes
-1.- Crear servicio para ejecución.
-2.- Agregar información para cada comando.
-3.- Subir capturas por cada comando.
-4.- Agregar mas comandos.
+<br>1.- Crear servicio para ejecución.
+<br>2.- Agregar información para cada comando.
+<br>3.- Subir capturas por cada comando.
+<br>4.- Agregar mas comandos.
 
