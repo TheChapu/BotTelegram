@@ -10,5 +10,16 @@ He reunido informacion de API y paginas WEB, utilizando la tecnica "web scraping
 Sin tener muchos conocimientos y con mucho esfuerzo(un par de meses y pidiendo ayuda), he llegado a esto, no es perfecto pero si funcional, aunque puede mejorar significativamente.
 Lo comparto para aumentar la lista(con la ayuda de ustedes) y darle robustez al codigo.
 
+# Archivos
 
+ciudad.txt        ---> Lista de ciudades disponibles para comando "aire".
+BotTelegram.py    ---> Bot
+
+
+
+# Pendientes
+1.- Crear servicio para ejecución.
+2.- Agregar información para cada comando.
+3.- Subir capturas por cada comando.
+4.- Agregar mas comandos.
 
