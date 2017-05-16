@@ -2,7 +2,7 @@
 Bot que obtiene información de diferentes paginas y API
 
 # Librerias Necesarias
-import telebot,import urllib,import sys,import datetime,import random,import os,import commands,import requests,import socket,from pygeocoder import Geocoder,from gtts import gTTS,import httplib, import lib, import json,import urllib2,from bs4 import BeautifulSoup,import time,import sys,import os,import wget
+requirements.txt
 
 # Informacion
 Esto fue realizado para profundizar conocimientos sobre Python y aprender sobre programacion "WEB"(por asi decirlo).
