@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import BeautifulSoup as bs4
 import telebot
 import urllib
 import urllib2
@@ -12,15 +13,20 @@ import requests
 import socket
 import requests
 
-API_TOKEN = '' #Token BotFather
+file_token = 'TOKEN'
+API_TOKEN = open(file_token).read() #Token generado por BotFather
 
 bot = telebot.TeleBot(API_TOKEN)
 
+"""@bot.message_handler(func=lambda m: True) # Función echo. Devuelve el mismo mensaje entrante. Sirve para debuggear
+def echo_all(message):
+    bot.reply_to(message, message.text)
+    print message.chat.id"""
+
 def listener(messages): # Con esto, estamos definiendo una función llamada 'listener', que recibe como parámetro un dato llamado 'messages'.
-    for m in messages: # Por cada dato 'm' en el dato 'messages'
-        cid = m.chat.id # Almacenaremos el ID de la conversación.
-        if m.content_type == 'text':
-            print "[" + str(cid) + "]: " + m.text # Y haremos que imprima algo parecido a esto -> [52033876]: /start
+    cid = messages.chat.id # Almacenaremos el ID de la conversación.
+    if messages.content_type == 'text':
+        print "[" + str(cid) + "]: " + m.text # Y haremos que imprima algo parecido a esto -> [52033876]: /start
  
 
 @bot.message_handler(commands=['start']) #Comando /start muestra lista de comandos
@@ -63,7 +69,7 @@ def send_welcome(message):
 def command_temp(m):
 	try:
 		cid = m.chat.id #Almacena el ID 
-		if cid == : # Solo acepta la ejecucion para un ID(el propio)
+		if cid == cid: # Solo acepta la ejecucion para un ID(el propio)
 			temp = commands.getoutput('/opt/vc/bin/vcgencmd measure_temp')
 			bot.send_message(cid, temp)
 		else:
@@ -75,7 +81,7 @@ def command_temp(m):
 def uptime(m):
 	try:
 		cid = m.chat.id #Almacena el ID
-		if cid == :# Solo acepta la ejecucion para un ID(el propio)
+		if cid == cid :# Solo acepta la ejecucion para un ID(el propio)
 			uptime = commands.getoutput('uptime')
 			bot.send_message(cid, uptime)
 		else:
@@ -87,7 +93,7 @@ def uptime(m):
 def tamano(m):
 	try:
 		cid = m.chat.id #Almacena el ID
-		if cid == :# Solo acepta la ejecucion para un ID(el propio)
+		if cid == cid :# Solo acepta la ejecucion para un ID(el propio)
 			tamano = commands.getoutput('df -h')
 			bot.send_message(cid, tamano)
 		else:
@@ -99,7 +105,7 @@ def tamano(m):
 def command_temp(m):
 	try:
 		cid = m.chat.id #Almacena el ID
-		if cid == :# Solo acepta la ejecucion para un ID(el propio)
+		if cid == cid :# Solo acepta la ejecucion para un ID(el propio)
 			freqCPU = commands.getoutput('cat /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_cur_freq')
 			bot.send_message(cid, freqCPU)
 		else:
@@ -111,7 +117,7 @@ def command_temp(m):
 def command_speedtest(m):
 	try:
 		cid = m.chat.id #Almacena el ID
-		if cid == :# Solo acepta la ejecucion para un ID(el propio)
+		if cid == cid :# Solo acepta la ejecucion para un ID(el propio)
 			speedtest = commands.getoutput('speedtest')
 			bot.send_message(cid, speedtest)
 		else:
@@ -119,11 +125,11 @@ def command_speedtest(m):
 	except Exception,e:
 		print e
 		
-@bot.message_handler(commands=['scan']))# realiza un escaneo de equipos conectados desde la RPI
+@bot.message_handler(commands=['scan']) # realiza un escaneo de equipos conectados desde la RPI
 def command_scan(m):
 	try:
 		cid = m.chat.id #Almacena el ID
-		if cid == :# Solo acepta la ejecucion para un ID(el propio)
+		if cid == cid :# Solo acepta la ejecucion para un ID(el propio)
 			scan = commands.getoutput('sudo nmap -sP 192.168.1.1-254')
 			bot.send_message(cid, scan)
 		else:
@@ -135,7 +141,7 @@ def command_scan(m):
 def ipdata(m):
 	try:
 		cid = m.chat.id #Almacena el ID
-		if cid == :# Solo acepta la ejecucion para un ID(el propio)
+		if cid == cid :# Solo acepta la ejecucion para un ID(el propio)
 			data = requests.get('http://ip-api.com/json').json()
 			isp = data['isp']
 			As = data['as']
@@ -319,7 +325,7 @@ def loto(m):
 		cid = m.chat.id
 		url       = urllib2.urlopen('http://www.polla.cl/cache/dgLastResultsForGame/es/Loto/1.xml')
 		contents  = url.read()
-		parse=BeautifulSoup(contents , "lxml")
+		parse=bs4(contents , "lxml")
 		fecha = parse.find("resulttime").text
 		loto = parse.findAll("mainvalues")
 		fecha = fecha[:10]
@@ -385,7 +391,7 @@ def sismos(m):
 		cid = m.chat.id
 		link     = requests.get("https://www.sismos.cl/xml_data.xml")
 		data     = link.text
-		html     = BeautifulSoup(data,"lxml")
+		html     = bs4(data,"lxml")
 		entradas = html.find_all('marker', limit=3) #Cambiar este numero para mas resultados
 
 		for message in entradas:
@@ -416,7 +422,7 @@ def flickr(m):
 		def ejecutar():
 			conexion  = requests.get('https://www.flickr.com/explore')
 			contenido = conexion.content
-			html      = BeautifulSoup(contenido,"html5lib")
+			html      = bs4(contenido,"html5lib")
 			entradas  = html.find_all('div',{"class":"view photo-list-photo-view requiredToShowOnServer awake"},limit=3)
 
 			for imagen in entradas:
