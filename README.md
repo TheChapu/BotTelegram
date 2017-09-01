@@ -1,5 +1,5 @@
 # BotTelegram
-Bot que obtiene información de diferentes paginas y API
+Bot configurado para Raspberry Pi que obtiene información de diferentes paginas y API
 
 # Librerias Necesarias
 requirements.txt
